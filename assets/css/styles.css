@@ -1,23 +1,23 @@
 :root {
-  --paper: #ebe7de;
-  --paper-light: #f4f1ea;
-  --paper-deep: #dfd9cc;
-  --field: #fbfaf7;
-  --ink: #15171a;
-  --ink-soft: #3b3e43;
-  --muted: #62615b;
+  --paper: #ffffff;
+  --paper-light: #f4f6f8;
+  --paper-deep: #e8edf2;
+  --field: #ffffff;
+  --ink: #202932;
+  --ink-soft: #46515c;
+  --muted: #5e6975;
   --line: rgba(21, 23, 26, 0.16);
   --line-strong: rgba(21, 23, 26, 0.42);
   --grid: rgba(21, 23, 26, 0.055);
   --grid-strong: rgba(21, 23, 26, 0.11);
-  --night: #141618;
-  --night-deep: #0d0e10;
-  --night-line: rgba(235, 231, 222, 0.14);
-  --night-text: #ebe7de;
-  --night-muted: #a19e95;
-  --accent: #d2451e;
-  --accent-deep: #b23a17;
-  --accent-soft: rgba(210, 69, 30, 0.17);
+  --night: #f4f6f8;
+  --night-deep: #e8edf2;
+  --night-line: rgba(32, 41, 50, 0.16);
+  --night-text: #202932;
+  --night-muted: #5e6975;
+  --accent: #245a84;
+  --accent-deep: #194366;
+  --accent-soft: rgba(36, 90, 132, 0.12);
   --font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --font-cond: "IBM Plex Sans Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -193,8 +193,8 @@ html:not(.js) [data-js-only] {
   padding: 0.05rem 0.4rem;
   border: 1px solid var(--night-line);
   color: var(--night-text);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .demo-bar__text {
@@ -281,8 +281,8 @@ html:not(.js) [data-js-only] {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .site-nav__list {
@@ -319,7 +319,7 @@ html:not(.js) [data-js-only] {
 
 .lang a {
   padding: 0.4rem 0.55rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
@@ -542,8 +542,8 @@ html:not(.js) [data-js-only] {
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .eyebrow__dot {
@@ -559,8 +559,8 @@ html:not(.js) [data-js-only] {
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .section-label--light {
@@ -621,7 +621,7 @@ html:not(.js) [data-js-only] {
   max-width: 14ch;
   margin-top: 1.5rem;
   font-family: var(--font-cond);
-  font-size: clamp(2.9rem, 8.4vw, 6rem);
+  font-size: clamp(2.7rem, 6.5vw, 4.75rem);
   font-weight: 700;
   line-height: 0.94;
   letter-spacing: -0.02em;
@@ -629,7 +629,7 @@ html:not(.js) [data-js-only] {
 }
 
 .hero__accent {
-  color: var(--accent);
+  color: inherit;
 }
 
 .hero__lead {
@@ -684,8 +684,8 @@ html:not(.js) [data-js-only] {
   color: var(--paper-light);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .job-card__row {
@@ -701,8 +701,8 @@ html:not(.js) [data-js-only] {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .job-card__row dd {
@@ -772,8 +772,8 @@ html:not(.js) [data-js-only] {
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .diagram__canvas {
@@ -968,19 +968,6 @@ html:not(.js) [data-js-only] {
   fill: var(--accent);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .car__body {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: draw-line 1.8s cubic-bezier(0.6, 0.1, 0.2, 1) 0.2s forwards;
-  }
-}
-
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
 
 @media (max-width: 640px) {
   .car__body {
@@ -1153,8 +1140,8 @@ html:not(.js) [data-js-only] {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .service__items {
@@ -1223,7 +1210,7 @@ html:not(.js) [data-js-only] {
 
 .checklist__item {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   padding-block: 1.25rem;
   border-bottom: 1px solid var(--line-strong);
@@ -1263,8 +1250,8 @@ html:not(.js) [data-js-only] {
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .builder__body {
@@ -1304,8 +1291,8 @@ html:not(.js) [data-js-only] {
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .field__optional {
@@ -1467,8 +1454,8 @@ html:not(.js) [data-js-only] {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .facts__row a {
@@ -1634,7 +1621,7 @@ html:not(.js) [data-js-only] {
   margin-top: 1rem;
   color: var(--night-text);
   font-family: var(--font-cond);
-  font-size: clamp(2.6rem, 9.5vw, 8.5rem);
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -1718,8 +1705,8 @@ html:not(.js) [data-js-only] {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .site-footer__links {
@@ -1760,7 +1747,7 @@ html:not(.js) [data-js-only] {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   padding-bottom: env(safe-area-inset-bottom);
-  background: var(--ink);
+  background: var(--paper-light);
   border-top: 1px solid var(--night-line);
 }
 
@@ -1838,4 +1825,89 @@ html:not(.js) [data-js-only] {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
+}
+
+.eyebrow,
+.job-card__head,
+.job-card__row dt,
+.facts__row dt,
+.builder__head,
+.field__label,
+.service__label,
+.site-footer__heading,
+.brand__sub,
+.hero__note {
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  font-size: 1rem;
+}
+
+.hero__note::before {
+  display: none;
+}
+
+.job-card__head {
+  background: var(--paper-light);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.legend__button[aria-pressed="true"] {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+.legend__button[aria-pressed="true"] .legend__desc {
+  color: var(--muted);
+}
+
+.button--ghost-light {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.button--ghost-light:hover {
+  color: var(--ink);
+  background: var(--paper-deep);
+}
+
+.contact__phone {
+  color: var(--ink);
+}
+
+.lang--footer {
+  border-color: var(--line-strong);
+}
+
+.lang--footer a[aria-current="true"] {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.contact__address,
+.site-footer__bottom,
+.job-card__row dt,
+.facts__row dt,
+.service__label,
+.site-footer__heading {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.service__items {
+  list-style: disc;
+  padding-left: 1.2rem;
+}
+
+.service__items li {
+  padding: 0.4rem 0;
+  border-top: 0;
+}
+
+.service__items li::before {
+  display: none;
 }

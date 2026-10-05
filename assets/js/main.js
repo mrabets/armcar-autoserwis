@@ -3,21 +3,19 @@ root.classList.add("js");
 
 const dictionary = {
   pl: {
-    greeting: "Dzień dobry, piszę w sprawie naprawy samochodu.",
+    greeting: "Dzień dobry, chcę umówić wizytę w warsztacie.",
     area: "Usługa",
     car: "Samochód",
     issue: "Opis",
-    name: "Imię",
     copied: "Tekst skopiowany. Wklej go do wiadomości na Instagramie.",
     copyFailed: "Nie udało się skopiować automatycznie. Zaznacz tekst i skopiuj go ręcznie.",
     mapTitle: "Mapa Google: ARMCAR Autoserwis, Wał Zawadowski 135, Warszawa"
   },
   ru: {
-    greeting: "Здравствуйте, пишу по поводу ремонта машины.",
+    greeting: "Здравствуйте! Хочу записаться в сервис.",
     area: "Услуга",
     car: "Автомобиль",
     issue: "Описание",
-    name: "Имя",
     copied: "Текст скопирован. Вставьте его в сообщение в Instagram.",
     copyFailed: "Не получилось скопировать автоматически. Выделите текст и скопируйте его вручную.",
     mapTitle: "Карта Google: ARMCAR Autoserwis, Wał Zawadowski 135, Warszawa"
