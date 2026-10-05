@@ -10,7 +10,7 @@ Run `python3 -m http.server 8080` in this directory. Open `/` for Polish or `/ru
 
 ## Contact flow
 
-Visitors can call, get directions or open the verified Instagram profile. The message helper composes and copies a description locally; visitors send it themselves through Instagram. There is no booking backend or automatic message delivery. The Google map loads only on request.
+The first screen shows the phone, Instagram, opening hours and a directions link. Services are native `details` elements linked to zones on the car drawing; each service has its own anchor (for example `#hamulce` or `ru/#tormoza`) that opens it. The message helper composes and copies a description locally; visitors send it themselves through Instagram. There is no booking backend or automatic message delivery. The Google map loads only on request.
 
 ## Public information
 
@@ -19,7 +19,7 @@ Verified on 5 October 2026 using the Google Maps business listing and its owner 
 - Wał Zawadowski 135, 02-986 Warszawa
 - +48 501 792 367
 - https://www.instagram.com/armcarpl/
-- Monday–Friday 09:00–18:00, Saturday 10:00–15:00, Sunday closed
+- Monday-Friday 09:00-18:00, Saturday 10:00-15:00, Sunday closed
 - 4.7/5 from 162 Google reviews, shown with a verification date
 - Diagnostics, oil and filters, brakes, suspension and steering, gearbox and exhaust repairs, tyres and wheels, car electrics, body and glass repairs, painting and air conditioning
 

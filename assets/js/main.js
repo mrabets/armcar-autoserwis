@@ -7,7 +7,7 @@ const dictionary = {
     area: "Usługa",
     car: "Samochód",
     issue: "Opis",
-    copied: "Tekst skopiowany. Wklej go do wiadomości na Instagramie.",
+    copied: "Tekst skopiowany. Wklej go w wiadomości na Instagramie.",
     copyFailed: "Nie udało się skopiować automatycznie. Zaznacz tekst i skopiuj go ręcznie.",
     mapTitle: "Mapa Google: ARMCAR Autoserwis, Wał Zawadowski 135, Warszawa"
   },
@@ -62,42 +62,71 @@ if (header && menuToggle && menu) {
   });
 }
 
-const diagram = document.querySelector("[data-diagram]");
+const services = document.querySelector("[data-services]");
 
-if (diagram) {
-  const buttons = Array.from(diagram.querySelectorAll("[data-zone-button]"));
-  const shapes = Array.from(diagram.querySelectorAll("[data-zone]"));
+if (services) {
+  const items = Array.from(services.querySelectorAll("[data-service]"));
+  const parts = Array.from(services.querySelectorAll("[data-zone]"));
   const canHover = window.matchMedia("(hover: hover)").matches;
 
-  const selectZone = (zone) => {
-    buttons.forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.zoneButton === zone));
-    });
-    const selected = buttons.find((button) => button.dataset.zoneButton === zone);
-    const link = diagram.querySelector("[data-service-link]");
-    const label = diagram.querySelector("[data-service-label]");
-    if (selected && link && label) {
-      link.setAttribute("href", `#${selected.dataset.serviceId}`);
-      label.textContent = `${root.lang === "ru" ? "Подробнее" : "Szczegóły"}: ${selected.querySelector(".legend__title").textContent}`;
-    }
-    shapes.forEach((shape) => {
-      shape.classList.toggle("is-active", shape.dataset.zone === zone);
+  const highlight = (zone) => {
+    parts.forEach((part) => {
+      part.classList.toggle("is-active", part.dataset.zone === zone);
     });
   };
 
-  buttons.forEach((button) => {
-    const zone = button.dataset.zoneButton || "1";
-    button.addEventListener("click", () => selectZone(zone));
+  const showOpen = () => {
+    const open = items.find((item) => item.open);
+    highlight(open ? open.dataset.service : "");
+  };
+
+  items.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (item.open) {
+        items.forEach((other) => {
+          if (other !== item) {
+            other.open = false;
+          }
+        });
+      }
+      showOpen();
+    });
     if (canHover) {
-      button.addEventListener("mouseenter", () => selectZone(zone));
+      item.addEventListener("mouseenter", () => highlight(item.dataset.service));
+      item.addEventListener("mouseleave", showOpen);
     }
   });
 
-  shapes.forEach((shape) => {
-    shape.addEventListener("click", () => selectZone(shape.dataset.zone || "1"));
+  parts.forEach((part) => {
+    part.addEventListener("click", () => {
+      const item = items.find((entry) => entry.dataset.service === part.dataset.zone);
+      if (item) {
+        item.open = true;
+        item.scrollIntoView({ block: "nearest" });
+      }
+    });
+    if (canHover) {
+      part.addEventListener("mouseenter", () => highlight(part.dataset.zone));
+      part.addEventListener("mouseleave", showOpen);
+    }
   });
 
-  selectZone("1");
+  const openFromHash = () => {
+    let id;
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    const item = items.find((entry) => entry.id === id);
+    if (item) {
+      item.open = true;
+    }
+  };
+
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
+  showOpen();
 }
 
 const builder = document.querySelector("[data-builder]");
@@ -125,9 +154,8 @@ if (builder) {
   };
 
   const update = () => {
-    const message = compose();
     if (preview) {
-      preview.textContent = message;
+      preview.textContent = compose();
     }
     if (status) {
       status.textContent = "";
@@ -181,26 +209,21 @@ if (builder) {
 }
 
 const map = document.querySelector("[data-map]");
+const mapButton = document.querySelector("[data-map-load]");
 
-if (map) {
-  const loadButton = map.querySelector("[data-map-load]");
-  const placeholder = map.querySelector("[data-map-placeholder]");
-
-  if (loadButton) {
-    loadButton.addEventListener("click", () => {
-      const frame = document.createElement("iframe");
-      frame.className = "map__frame";
-      frame.src = map.dataset.mapSrc || "";
-      frame.title = text.mapTitle;
-      frame.referrerPolicy = "no-referrer-when-downgrade";
-      frame.allowFullscreen = true;
-      map.append(frame);
-      map.classList.add("is-loaded");
-      if (placeholder) {
-        placeholder.hidden = true;
-      }
-    });
-  }
+if (map && mapButton) {
+  mapButton.addEventListener("click", () => {
+    const frame = document.createElement("iframe");
+    frame.className = "map__frame";
+    frame.src = map.dataset.mapSrc || "";
+    frame.title = text.mapTitle;
+    frame.referrerPolicy = "no-referrer-when-downgrade";
+    frame.allowFullscreen = true;
+    map.append(frame);
+    map.hidden = false;
+    mapButton.hidden = true;
+    map.focus({ preventScroll: true });
+  }, { once: true });
 }
 
 document.querySelectorAll("[data-year]").forEach((node) => {
