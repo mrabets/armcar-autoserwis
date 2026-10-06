@@ -141,6 +141,10 @@ a:hover {
   border: 0;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .skip-link {
   position: absolute;
   top: 0.5rem;

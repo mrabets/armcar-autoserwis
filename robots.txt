@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://mrabets.github.io/armcar-autoserwis/sitemap.xml
